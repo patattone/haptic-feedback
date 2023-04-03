@@ -1,5 +1,5 @@
 # haptic-feedback
-- Julia interview transcript.pdf contains the raw transcript from interview w Julia
+- ```Julia interview transcript.pdf``` contains the raw transcript from interview w Julia
 - Riley interview transcript.pdf contains the raw transcript from interview w Riley
 - cogs 402 raw data - Sheet1.pdf contains the raw data from the IMUs during the application example + graphs of that data
 - find_bluetooth.py is a file used to find the address the RFDuino we were using was sending out. 
