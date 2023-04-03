@@ -107,21 +107,32 @@ async def main(ble_address: str) -> object:
             avg_gx2 = sum(last_readings['Gx2']) / len(last_readings['Gx2'])
             avg_gy2 = sum(last_readings['Gy2']) / len(last_readings['Gy2'])
             avg_gz2 = sum(last_readings['Gz2']) / len(last_readings['Gz2'])
-            LH_ACC_THRESHOLD = 4
-            LH_GYR_THRESHOLD = 4
-            RH_ACC_THRESHOLD = 3
+            LH_ACC_THRESHOLD = 2
+            LH_GYR_THRESHOLD = 2
+            RH_ACC_THRESHOLD = 2
             RH_GYR_THRESHOLD = 3
 
-            #LH = IMU 1
-            #RH = IMU 2
-            if (avg_ax1 > avg_ax2 + RH_ACC_THRESHOLD or avg_ay1 > avg_ay2 + RH_ACC_THRESHOLD or avg_az1 > avg_az2 + RH_ACC_THRESHOLD or avg_gx1 > avg_gx2 + RH_GYR_THRESHOLD or avg_gy1 > avg_gy2 + RH_GYR_THRESHOLD or avg_gz1 > avg_gz2 + RH_GYR_THRESHOLD):
+            #LH = IMU 2
+            #RH = IMU 1
+            if (  (avg_ax1 - avg_ax2) > RH_ACC_THRESHOLD):
                 print("RH in motion")
                 playSignal(audio)
-            elif (avg_ax2 > avg_ax1 + LH_ACC_THRESHOLD or avg_ay2 > avg_ay1 + LH_ACC_THRESHOLD or avg_az2 > avg_az1 + LH_ACC_THRESHOLD or avg_gx2 > avg_gx1 + LH_GYR_THRESHOLD or avg_gy2 > avg_gy1 + LH_GYR_THRESHOLD or avg_gz2 > avg_gz1 + LH_GYR_THRESHOLD):
+            elif (  (avg_ax2 - avg_ax1) > LH_ACC_THRESHOLD):
                 print("LH in motion")
             else:
                 print("At rest")
-            print(imu_data) # print the imu data array gathered from the callback function
+            print(imu_data)
+            print(avg_ax1)
+            print(avg_ax2)
+            #if (avg_ax1 > avg_ax2 + RH_ACC_THRESHOLD or avg_ay1 > avg_ay2 + RH_ACC_THRESHOLD or avg_az1 > avg_az2 + RH_ACC_THRESHOLD or avg_gx1 > avg_gx2 + RH_GYR_THRESHOLD or avg_gy1 > avg_gy2 + RH_GYR_THRESHOLD or avg_gz1 > avg_gz2 + RH_GYR_THRESHOLD):
+            #    print("RH in motion")
+            #    playSignal(audio)
+            #elif (avg_ax2 > avg_ax1 + LH_ACC_THRESHOLD or avg_ay2 > avg_ay1 + LH_ACC_THRESHOLD or avg_az2 > avg_az1 + LH_ACC_THRESHOLD or avg_gx2 > avg_gx1 + LH_GYR_THRESHOLD or avg_gy2 > avg_gy1 + LH_GYR_THRESHOLD or avg_gz2 > avg_gz1 + LH_GYR_THRESHOLD):
+            #    print("LH in motion")
+            #elif
+            #else:
+            #    print("Both in motion")
+            #print(imu_data) # print the imu data array gathered from the callback function
 
 
 if __name__ == "__main__":
