@@ -1,4 +1,5 @@
 # haptic-feedback
+- ```Arm use asymmetry pilot data_2023Mar24.pptx``` contains the procedure and results from Bev Larssen's pilot study as discussed in the report
 - ```Julia interview transcript.pdf``` contains the raw transcript from interview w Julia
 - ```Riley interview transcript.pdf``` contains the raw transcript from interview w Riley
 - ```cogs 402 raw data - Sheet1.pdf``` contains the raw data from the IMUs during the application example + graphs of that data
